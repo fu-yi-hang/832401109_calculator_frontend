@@ -1,5 +1,9 @@
-
-const API_BASE = "http://127.0.0.1:5000";   
+/**
+ * 分离式计算器 —— 前端 v2（功能1+2：基础计算 + 复合表达式）
+ * 新增：括号输入。运算符优先级、一元正负号、小数、无效表达式与除零
+ * 全部由后端 ast 解析器处理，前端依然不计算任何结果。
+ */
+const API_BASE = "http://127.0.0.1:5000";   // 本地调试地址
 
 const display = document.getElementById("display");
 const statusEl = document.getElementById("status");
@@ -89,7 +93,8 @@ document.querySelector(".keys").addEventListener("click", (event) => {
 });
 
 document.addEventListener("keydown", (event) => {
-    const keyMap = { "*": "*", "+": "+", "-": "-", "/": "/", ".": "." };
+    // v2：键盘也支持输入括号，可键入 (1+2)*3 这类复合表达式
+    const keyMap = { "*": "*", "+": "+", "-": "-", "/": "/", ".": ".", "(": "(", ")": ")" };
     if (/^[0-9]$/.test(event.key)) appendToken(event.key);
     else if (keyMap[event.key]) appendToken(keyMap[event.key]);
     else if (event.key === "Enter" || event.key === "=") calculate();
