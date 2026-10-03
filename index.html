@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分离式计算器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+    <main class="calculator">
+        <h1 class="title">分离式计算器</h1>
+        <div class="display" id="display">0</div>
+        <div class="status" id="status"></div>
+
+        <div class="keys">
+            <button class="key fn" data-action="clear">C</button>
+            <button class="key fn" data-action="back">⌫</button>
+            <button class="key fn" data-token="(">(</button>
+            <button class="key fn" data-token=")">)</button>
+
+            <button class="key" data-token="7">7</button>
+            <button class="key" data-token="8">8</button>
+            <button class="key" data-token="9">9</button>
+            <button class="key op" data-token="/">÷</button>
+
+            <button class="key" data-token="4">4</button>
+            <button class="key" data-token="5">5</button>
+            <button class="key" data-token="6">6</button>
+            <button class="key op" data-token="*">×</button>
+
+            <button class="key" data-token="1">1</button>
+            <button class="key" data-token="2">2</button>
+            <button class="key" data-token="3">3</button>
+            <button class="key op" data-token="-">−</button>
+
+            <button class="key" data-token="0">0</button>
+            <button class="key" data-token=".">.</button>
+            <button class="key op" data-token="+">+</button>
+            <button class="key op" data-action="equals">=</button>
+        </div>
+        <p class="hint">计算由后端 Flask 服务完成 · <span id="api-info"></span></p>
+    </main>
+
+    <aside class="history-panel">
+        <div class="history-header">
+            <h2>计算历史</h2>
+            <div class="history-tools">
+                <button id="clear-history" class="tool-btn danger" title="清空全部历史">清空</button>
+                <button id="refresh-history" class="tool-btn" title="从后端重新加载">⟳</button>
+            </div>
+        </div>
+        <ul class="history-list" id="history-list"></ul>
+    </aside>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
